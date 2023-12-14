@@ -1,0 +1,1 @@
+INSERT INTO `roles` (`id`, `name`, `is_active`, `is_deleted`) VALUES ('1', 'Super Admin', '1', '0'),('2', 'Admin', '1', '0'), ('3', 'Vendor', '1', '0');

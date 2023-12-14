@@ -1,0 +1,435 @@
+{
+	"info": {
+		"_postman_id": "f6b26936-2e2c-4e62-ba6f-f1bfdf858a7b",
+		"name": "Vendor Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29956126"
+	},
+	"item": [
+		{
+			"name": "Create Vendor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authrization",
+						"value": "Beare kdjkdfjfjdfjnndfdjfdfh",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"xyz\",\r\n    \"email\":\"xyz@gmil.com\",\r\n    \"password\":\"P@$$w0rd\",\r\n    \"address\":\"fjdfj jddf\",\r\n    \"contact_deatils\":\"7087643191, mk@gmail.com\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/vendors/create",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vendors",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Vendors",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"xyz\",\r\n    \"address\":\"fjdfj jddf\",\r\n    \"contact_deatils\":\"7087643191, mk@gmail.com\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/vendors/update/3/?Authrization=Beare kdjkdfjfjdfjnndfdjfdfh",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vendors",
+						"update",
+						"3",
+						""
+					],
+					"query": [
+						{
+							"key": "Authrization",
+							"value": "Beare kdjkdfjfjdfjnndfdjfdfh"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vendors List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authrization",
+						"value": "Beare kdjkdfjfjdfjnndfdjfdfh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/vendors/list/?limit=1&size=10",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vendors",
+						"list",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vendors Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authrization",
+						"value": "Beare kdjkdfjfjdfjnndfdjfdfh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/vendors/details/?limit=1&size=10",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vendors",
+						"details",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Vendors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authrization",
+						"value": "Beare kdjkdfjfjdfjnndfdjfdfh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/vendors/delete/2/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vendors",
+						"delete",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Purchase Orders",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authrization",
+						"value": "Beare kdjkdfjfjdfjnndfdjfdfh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/purchase_orders/update/2/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"purchase_orders",
+						"update",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase Order List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authrization",
+						"value": "Beare kdjkdfjfjdfjnndfdjfdfh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/purchase_orders/list/?limit=2&size=10",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"purchase_orders",
+						"list",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase Order Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authrization",
+						"value": "Beare kdjkdfjfjdfjnndfdjfdfh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/purchase_orders/details/2/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"purchase_orders",
+						"details",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Purchase Orders",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authrization",
+						"value": "Beare kdjkdfjfjdfjnndfdjfdfh",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/purchase_orders/create?Authrization=Beare kdjkdfjfjdfjnndfdjfdfh",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"purchase_orders",
+						"create"
+					],
+					"query": [
+						{
+							"key": "Authrization",
+							"value": "Beare kdjkdfjfjdfjnndfdjfdfh"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Purchase Order",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authrization",
+						"value": "Beare kdjkdfjfjdfjnndfdjfdfh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/purchase_orders/delete/2/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"purchase_orders",
+						"delete",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vendor Performance",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authrization",
+						"value": "Beare kdjkdfjfjdfjnndfdjfdfh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/vendors/2/performance/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vendors",
+						"2",
+						"performance",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase Order ack",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/vendors/2/ackknowledge/?Authrization=Beare kdjkdfjfjdfjnndfdjfdfh",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vendors",
+						"2",
+						"ackknowledge",
+						""
+					],
+					"query": [
+						{
+							"key": "Authrization",
+							"value": "Beare kdjkdfjfjdfjnndfdjfdfh"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
