@@ -19,7 +19,7 @@ class Order_Purchase(models.Model):
     order_date      = models.DateTimeField(auto_now_add=True, null=True)
     delivery_date           = models.DateTimeField(default=None,null=True,blank=True)
     items = models.JSONField(null=True, default=None)
-    qauntity =models.IntegerField(null=True, default=None)
+    quantity =models.IntegerField(null=True, default=None)
     status = models.CharField(max_length=30,choices = Status_Choice, default = '1')
     quality_rating = models.FloatField(null=True, default=None)
     acknowledgment_date = models.DateTimeField(default=None,null=True,blank=True)

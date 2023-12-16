@@ -5,10 +5,11 @@ from vendor.models.orders import Order_Purchase
 from vendor.models.users import User
 from rest_framework import serializers
 
+
 class PurchaseOrderInfo(ModelSerializer):
     class Meta:
         model = Order_Purchase
-        fields = ['id','po_number','order_date','delivery_date','items',"qauntity","status","quality_rating","acknowledgment_date","issue_date"]
+        fields = ['id','po_number','order_date','delivery_date','items',"quantity","status","quality_rating","acknowledgment_date","issue_date"]
         #depth =1
 
 class PurchaseOrderBaseSerializer(ModelSerializer):
@@ -23,7 +24,7 @@ class PurchaseOrderBaseSerializer(ModelSerializer):
 class PurchaseOrderListSerializer(PurchaseOrderBaseSerializer):
     class Meta:
         model = Order_Purchase
-        fields = ('id','po_number','order_date','delivery_date','items',"qauntity","status","quality_rating","acknowledgment_date","issue_date")
+        fields = ('id','po_number','order_date','delivery_date','items',"quantity","status","quality_rating","acknowledgment_date","issue_date")
        
     def to_representation(self, instance):
         try:
@@ -40,7 +41,8 @@ class AddPurchaseOrderSerializer(serializers.Serializer):
     items = serializers.JSONField(required=True)
     quantity = serializers.CharField(required=True)
 
-class UpdatePurchaseOrdersSerializer(serializers.Serializer):
-    items = serializers.CharField(required=False)
-    quantity = serializers.CharField(required=False)
-    flag = serializers.CharField(required=True)
+
+class UpdatePurchaseOrdersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order_Purchase
+        fields = ['items', 'quantity']

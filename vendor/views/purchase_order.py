@@ -13,7 +13,6 @@ from vendor.utility.common_function import GetOrderNumber
 from datetime import datetime
 
 class CreatePurchaseOrders(generics.CreateAPIView):
-
     authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
     permission_classes = (IsAuthenticated,IsAdmin)
     serializer_class = AddPurchaseOrderSerializer
@@ -27,12 +26,12 @@ class CreatePurchaseOrders(generics.CreateAPIView):
                 data = {"status":400,"message":"Invalid Data","data":{"message":"Invalid Data",'form_errors':serializer.errors}}
                 return Response(data)
             vendor = User.objects.get(vendor_code=data["vendor_code"],role__name="Vendor")
-            od = Order_Purchase.objects.create(vendor=vendor,items=data["items"],qauntity=data["quantity"],status="Pending")
+            od = Order_Purchase.objects.create(vendor=vendor,items=data["items"],quantity=data["quantity"],status="Pending",issue_date=datetime.now())
             Order_Purchase.objects.filter(pk=od.id).update(po_number=GetOrderNumber(od.id))
             return Response(response)
         except Exception as e:
             response = {'status':500 , "message":"Something went wrong","data":None,"trace":str(e)}
-            return response
+            return Response(response)
 
 
 class PurposeOrdersListView(generics.ListAPIView):
@@ -59,8 +58,6 @@ class PurposeOrdersListView(generics.ListAPIView):
             return Response(data)
 
 
-
-
 class PurchaseDetailsDetailView(generics.RetrieveAPIView):
     pagination_class = CustomPageNumberPagination
     authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
@@ -81,8 +78,6 @@ class PurchaseDetailsDetailView(generics.RetrieveAPIView):
             return Response(data)
 
 
-
-
 class UpdatePurchaseOrderView(generics.UpdateAPIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
     permission_classes = (IsAuthenticated,IsAdmin)
@@ -90,24 +85,22 @@ class UpdatePurchaseOrderView(generics.UpdateAPIView):
     
     def put(self,request,pk):
         try:
-            data = request.data
+            flag = request.GET.get("flag")
             response = {'status':200 , "message":"Purchase Order Updated Successfully","data":None}
-            serializer = self.serializer_class(data=data)
+            instance = Order_Purchase.objects.get(pk=pk)
+            serializer = self.serializer_class(instance, data=request.data)
             if not  serializer.is_valid():
                 data = {"status":400,"message":"Invalid Data","data":{"message":"Invalid Data",'form_errors':serializer.errors}}
                 return Response(data)
-            if data["flag"] == "status":
+            if flag == "status":
                 Order_Purchase.objects.filter(pk=pk).update(status="Completed")
-            elif data["flag"] == "acknowledgment_date":
-                Order_Purchase.objects.filter(pk=pk).update(acknowledgment_date=datetime.now())
             else:
-                Order_Purchase.objects.filter(pk=pk).update(items=data["items"],quantity=data["quantity"])
+                if serializer.is_valid():
+                    serializer.save()
             return Response(response)
         except Exception as e:
             response = {'status':500 , "message":"Something went wrong","data":None,"trace":str(e)}
-
-
-
+            return Response(response)
 
 
 class DeletePurchaseOrder(generics.DestroyAPIView):
@@ -123,9 +116,32 @@ class DeletePurchaseOrder(generics.DestroyAPIView):
             return Response(data)
 
 
-
-
-
-
-
-
+class UpdateAcknowledgment(generics.UpdateAPIView):
+    authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
+    permission_classes = (IsAuthenticated,IsAdmin)
+    
+    def post(self,request,pk):
+        try:
+            response = {'status':200 , "message":"Updated Successfully","data":None}
+            od = Order_Purchase.objects.filter(id=pk)
+            print(od[0].acknowledgment_date)
+            if od[0].acknowledgment_date != None and od[0].acknowledgment_date != "":
+                return  Response({'status':200 , "message":"Order is already acknowledged","data":None})
+            total_order_count = od.filter(vendor__id=od[0].vendor.id).count()
+            od.update(acknowledgment_date=datetime.now())
+            try:
+                ak_date = str(od[0].acknowledgment_date - od[0].issue_date)
+                final_date = ak_date.split(":")
+                h,m= str(final_date[0]),str(final_date[1])
+                fd = h+"."+m
+                try:
+                    vrt =round((od[0].vendor.average_response_time+int(fd))/total_order_count,2)
+                except:
+                    vrt = fd
+                User.objects.filter(pk=od[0].vendor.id).update(average_response_time=vrt)
+            except Exception as e:
+                print(e)
+            return Response(response)
+        except Exception as e:
+            response = {'status':500 , "message":"Something went wrong","data":None,"trace":str(e)}
+            return  Response(response)

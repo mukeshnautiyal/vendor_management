@@ -39,7 +39,12 @@ class VendorAddSerializer(serializers.Serializer):
     contact_details = serializers.CharField(required=True)
     address = serializers.CharField(required=False,allow_blank=True)
 
-class UpdateVendorSerializer(serializers.Serializer):
+"""class UpdateVendorSerializer(serializers.Serializer):
     name = serializers.CharField(required=True)
     address = serializers.CharField(required=True)
-    contact_details = serializers.CharField(required=True)
+    contact_details = serializers.CharField(required=True)"""
+
+class UpdateVendorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['name', 'address','contact_details']

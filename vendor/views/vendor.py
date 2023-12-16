@@ -34,7 +34,7 @@ class CreateVendor(generics.CreateAPIView):
             return Response(response)
         except Exception as e:
             response = {'status':500 , "message":"Something went wrong","data":None,"trace":str(e)}
-            return response
+            return Response(response)
 
 
 class VendorListView(generics.ListAPIView):
@@ -54,8 +54,6 @@ class VendorListView(generics.ListAPIView):
         except Exception as E:
             data = {"status":500,"message":"Something went wrong!","data":{"trace":str(E)}}
             return Response(data)
-
-
 
 
 class DetailView(generics.RetrieveAPIView):
@@ -78,8 +76,6 @@ class DetailView(generics.RetrieveAPIView):
             return Response(data)
 
 
-
-
 class UpdateView(generics.UpdateAPIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
     permission_classes = (IsAuthenticated,IsAdmin)
@@ -87,20 +83,18 @@ class UpdateView(generics.UpdateAPIView):
     
     def put(self,request,pk):
         try:
-            data = request.data
             response = {'status':200 , "message":"Vendor Updated Successfully","data":None}
-            serializer = self.serializer_class(data=data)
+            instance = User.objects.get(pk=pk)
+            serializer = self.serializer_class(instance, data=request.data)
             if not  serializer.is_valid():
                 data = {"status":400,"message":"Invalid Data","data":{"message":"Invalid Data",'form_errors':serializer.errors}}
                 return Response(data)
-            User.objects.filter(pk=pk).update(name=data["name"],address=data["address"],contact_details=data["contact_details"])
+            elif serializer.is_valid():
+                serializer.save()
             return Response(response)
         except Exception as e:
             response = {'status':500 , "message":"Something went wrong","data":None,"trace":str(e)}
-            return response
-
-
-
+            return Response(response)
 
 
 class DeleteView(generics.DestroyAPIView):
@@ -115,11 +109,3 @@ class DeleteView(generics.DestroyAPIView):
         except Exception as E:
             data = {"status":500,"message":"Something went wrong!","data":{"trace":str(E)}}
             return Response(data)
-
-
-
-
-
-
-
-
