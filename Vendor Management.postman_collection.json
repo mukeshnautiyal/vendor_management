@@ -234,7 +234,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/purchase_orders/list/?limit=2&size=10",
+					"raw": "http://127.0.0.1:8000/api/purchase_orders/list/?vendoe_code=ven2&limit=2&size=10",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -257,6 +257,10 @@
 						{
 							"key": "size",
 							"value": "10"
+						},
+						{
+							"key": "vendor_code",
+							"value": "vend2"
 						}
 					]
 				}
