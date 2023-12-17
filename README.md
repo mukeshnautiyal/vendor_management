@@ -37,4 +37,3 @@ Setup application
 
 - run the test cases using below command
     python manage.py test vendor
- 
