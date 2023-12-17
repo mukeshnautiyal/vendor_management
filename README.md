@@ -1,4 +1,4 @@
-# vendor_management
+# Vendor Management
 python version-3.8.7
 Django version - 4.2.8
 djangorestframework version 3.14.0
