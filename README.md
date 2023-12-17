@@ -26,6 +26,8 @@ Setup application
 
 - create .env file inside the project directory and keep the all Database related key value inside the env file as given in the sampleenv file
 
+- Rename the file name settings1.py to settings.py and add the database related information in the .env file
+
 - Create new migration if not exist in the project directory
 
     Python manage.py makemigrations
