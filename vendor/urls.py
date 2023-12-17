@@ -18,7 +18,7 @@ urlpatterns = [
     path('vendors/update/<int:pk>/', UpdateView.as_view(), name='vendor_update'),
     path('vendors/delete/<int:pk>/', DeleteView.as_view(), name='vendor_delete'),
     #Performance
-    path('vendors/<int:pk>/performance/', VendorPerformance.as_view(), name='user_delete'),
+    path('vendors/<int:pk>/performance/', VendorPerformance.as_view(), name='user_performance'),
 
     #Purchase Order URLs
     path('purchase_orders/create/', CreatePurchaseOrders.as_view(), name="create_purchase_order"),

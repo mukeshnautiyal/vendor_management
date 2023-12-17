@@ -12,7 +12,7 @@ build/
 develop-eggs/
 dist/
 downloads/
-vendor_management/settings.py
+#vendor_management/settings.py
 eggs/
 .eggs/
 lib/
@@ -118,7 +118,7 @@ eolenv/
 settings.py
 #__init.py
 /vendor_management/__init__.py
-/vendor_management/settings.py
+#/vendor_management/settings.py
 
 
 .vscode

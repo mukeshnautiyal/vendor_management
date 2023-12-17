@@ -311,7 +311,7 @@
 					"raw": "{\r\n    \"\"\r\n}"
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/purchase_orders/create?Authrization=Beare kdjkdfjfjdfjnndfdjfdfh",
+					"raw": "http://127.0.0.1:8000/api/purchase_orders/create",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -400,12 +400,12 @@
 			"response": []
 		},
 		{
-			"name": "Purchase Order ack",
+			"name": "Purchase Order Acknowledgment",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/vendors/2/ackknowledge/?Authrization=Beare kdjkdfjfjdfjnndfdjfdfh",
+					"raw": "http://127.0.0.1:8000/api/vendors/2/acknowledge/",
 					"protocol": "http",
 					"host": [
 						"127",
