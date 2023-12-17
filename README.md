@@ -1,4 +1,4 @@
-# vendor_management
+# Vendor Management
 python version-3.8.7
 Django version - 4.2.8
 djangorestframework version 3.14.0
@@ -25,6 +25,8 @@ Setup application
 - Create new database in the mysql DB(as i'm using mysql database) 
 
 - create .env file inside the project directory and keep the all Database related key value inside the env file as given in the sampleenv file
+
+- Rename the file name settings1.py to settings.py and add the database related information in the .env file
 
 - Create new migration if not exist in the project directory
 
