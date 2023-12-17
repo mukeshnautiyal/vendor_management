@@ -18,6 +18,10 @@ Setup application
 
     anaconda- conda activate env_name (outside the env folder)
 
+- Clone the code from the git reposiotry using below command
+
+    git clone https://github.com/mukeshnautiyal/vendor_management.git
+
 - Run the below command to install project requirements
 
     pip install -r requirements.txt
@@ -28,7 +32,7 @@ Setup application
 
 - Rename the file name settings1.py to settings.py and add the database related information in the .env file
 
-- Create new migration if not exist in the project directory
+- Create new migration if not exist in the project apps
 
     Python manage.py makemigrations
 
